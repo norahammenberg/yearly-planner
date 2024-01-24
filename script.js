@@ -5,11 +5,13 @@
 const heading = document.getElementById("heading");
 const yearContainer = document.getElementById("year-container");
 const calenderCointainer = document.getElementById("calander-container");
-const calenderMonths = document.getElementById("month-container");
+const calenderMonths = document.getElementsByClassName("month-container");
 const calanderDays = document.getElementById("calander-days");
 
 // Date related variables:
-const date = new Date("2025-5-1");
+
+//getting todays date
+const date = new Date();
 
 const currentYear = date.getFullYear();
 
@@ -25,35 +27,80 @@ const currentDayByName = days[date.getDay()];
 
 //creating a dynamic header so year is correct:
 heading.append (currentYear + " Yearly Planner");
-/*const theMonth = [];
-function monthDayNumber () {
-    months.forEach(month => {
-        console.log(month);
-
-    });
-}
-//monthDayNumber();
-function markCurrentDay () {
-    console.log(currentDayDate);
-    console.log(currentMonth);
-
-}
-markCurrentDay();*/
 
 
-//findCurrentMonth();
+function understand() {
+    months.forEach((month, i) => {
+        const weekday = new Date(currentYear, i, 1).getDay();
+        const firstDayMonth = days[weekday];
+        //console.log(month + weekday)
+        
+        /*if (weekday ===  1 && div) {
+            
+            console.log(month);
+            const div = document.createElement("div");
+            const divDay = document.createElement("div");
+            divDay.className = "day empty-day";
+            div.appendChild(divDay);
+            calenderCointainer.appendChild(div)
+        }*/
+         if (firstDayMonth === "Tuesday") {
+            
+        }
+        else if (firstDayMonth === "Wednesday") {
+            
+        }
+        else if (firstDayMonth === "Thursday") {
+            
+        }
+        if (firstDayMonth === "Friday") {
+            
+        }
+        else if (firstDayMonth === "Saturday") {
+            
+        }
+        else {
+            
+        }
+    })
+    /*if (currentMonth === "January" && daysByNumber[0] === "1") {
+        console.log("Yes");
+    };*/
+};
+//understand();
+
 function displayMonths () {
-
+    
     //looping through the month array, every months is saved in the month and the index of the array is saved in the i
     months.forEach((month, i) => {
+        //finding out what weekday is the 1st of every month
+        const weekday = new Date(currentYear, i, 1).getDay();
+        const firstDayMonth = days[weekday];
+        
+        /*if (weekday ===  1 && div.classList) {
+            
+            console.log(month);
+            const div = document.createElement("div");
+            const divDay = document.createElement("div");
+            divDay.className = "day empty-day";
+            div.appendChild(divDay);
+            calenderCointainer.appendChild(div)
+        }*/
+
         //creating all relevent html to display the months:
         const div = document.createElement("div");
         div.className = "month-container";
+        div.id = month;
         const h2 = document.createElement("h2");
         h2.append(month);
         div.appendChild(h2);
-        calenderCointainer.appendChild(div)
-        
+        calenderCointainer.appendChild(div);
+
+        //finding the odd index numbers of the months array to be able to seperat the colours for the different months. 
+        if (i % 2 === 1) {
+            div.className = "month-container odd";
+        };
+
         //Looping through the days and create there HTML elements. 
         daysByNumber.forEach(day => {
             const divDay = document.createElement("div");
@@ -62,7 +109,44 @@ function displayMonths () {
             p.append(day);
             divDay.appendChild(p);
             div.appendChild(divDay);
-            
+
+            if (weekday ===  2 && div.id === month) {
+                h2.style.paddingBottom = "39px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+            else if (weekday ===  3 && div.id === month) {
+                h2.style.paddingBottom = "73px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+            else if (weekday ===  4 && div.id === month) {
+                h2.style.paddingBottom = "107px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+            else if (weekday ===  5 && div.id === month) {
+                h2.style.paddingBottom = "141px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+            else if (weekday ===  6 && div.id === month) {
+                h2.style.paddingBottom = "175px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+            else if (weekday ===  0 && div.id === month) {
+                console.log("THISTHISTHIS")
+                h2.style.paddingBottom = "243px"; /*OBS OBS MAGIC NUMBER WARNING*****************************************************************/
+                console.log("YOU GOT THIS" + month);
+            }
+                /*const emptyDiv = document.createElement("div");
+                divDay.className = "day empty-day";
+                emptyDiv.appendChild(divDay); 
+
+                const divDay = document.createElement("div");
+                divDay.className = "day";
+                const p = document.createElement("p");
+                p.append(day);
+                divDay.appendChild(p);
+                div.appendChild(divDay);
+            }*/
+  
             //checking what day it is and it the innerHTML is responding, then apply new style to show what day it is today
             if (p.innerHTML === currentDayDate && h2.innerHTML === currentMonth) {
                 h2.className = "current-month";
@@ -70,14 +154,10 @@ function displayMonths () {
                 p.style.fontWeight = "700";
             };
         }); //end of forEach day loop
-     
-        //finding the odd index numbers of the months array to be able to seperat the colours for the different months. 
-         if (i % 2 === 1) {
-            div.className = "month-container odd";
-         };
-    }); //end of forEach Month loop 
-    
+    }); //end of forEach Month loop  
 }
+
+
 
 /*function displayAllDays () {
     daysByNumber.forEach(day => {
