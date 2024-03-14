@@ -1,0 +1,19 @@
+{
+  "name": "yearly-planner",
+  "version": "1.0.0",
+  "description": "Yearly planner with Google Calander access.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/norahammenberg/yearly-planner.git"
+  },
+  "author": "Nora Hammenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/norahammenberg/yearly-planner/issues"
+  },
+  "homepage": "https://github.com/norahammenberg/yearly-planner#readme"
+}

@@ -21,27 +21,21 @@ const shortMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Se
 
 const currentMonth = months[date.getMonth()];
 
-//const daysByNumber = [1, 2,3,4,5,6,7,8,9,10,11,12,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-
 const daysByNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
 const currentDayDate = daysByNumber[date.getDate() - 1];
 
 const days = ["Sun", "Mon", "Tues", "Wed", "Thus", "Fri", "Sat"]
 const currentDayByName = days[date.getDay()];
 
-
 let widthViewPort;
 //creating a dynamic header so year is correct:
 heading.append (currentYear + " Yearly Planner");
 
-
-
-//dayByName();
 function displayMonths () {
     
     //looping through the month array, every months is saved in the month and the index of the array is saved in the i
     months.forEach((month, i) => {
-        
+    
         /* what you need to do is to count out how many empty divs should be there. */
         //finding out what day is the 1st day of every month by getting the Day (whish is days a week in nmbers)
         const firstDayMonth = new Date(currentYear, i, 1).getDay();
@@ -55,19 +49,17 @@ function displayMonths () {
         if(emptyDays === -1){
             emptyDays = 6;
         }
-        
-        
-        
+
         //creating all relevent html to display the months:
         const div = document.createElement("div");
         const h2 = document.createElement("h2");
         div.className = "month-container";
         div.id = month;
+
          //finding the odd index numbers of the months array to be able to seperat the colours for the different months. 
          if (i % 2 === 1) {
             div.className = "month-container odd";
         };
-        
          //Looping through the days and create there HTML elements.
         /* be looping through the days in a month plus the amount of empty days we will create the display of the days.
         we using the for loop as we kno how many times we need to display the month. */
@@ -75,9 +67,9 @@ function displayMonths () {
             
             const divDay = document.createElement("div");
             const emptyDiv = document.createElement("div");
-
             const pDay = document.createElement("p");
             const pNum = document.createElement("p");
+
             if ( i >= 0 && i <= 5) {
                 console.log("first div");
                 div.className = "month-container-first"
@@ -116,85 +108,16 @@ function displayMonths () {
                 divDay.className = "current-day day";                
             };
         } //end of for loop for days
-        
     }); //end of forEach Month loop  
-   
 }
 
 function updateWindowSize() {
     //variable widthviewport is == to the windws width.
     widthViewPort = window.innerWidth;
-  
-    /*if(widthViewPort >= 566 && widthViewPort <= 850 ) {
-        console.log("in tablet")
-        console.log(widthViewPort)
-        
-      
-    }
-    else if( widthViewPort <= 565) {
-        console.log(widthViewPort)
-        console.log("IN MOBLIE")
-    }
-    else{
-        console.log("in desk");
-    }*/
 }
-
-
-updateWindowSize();
 
 //the resize of the window must be reported everytime it is resized, thats why i need to use onresize rather eventlistener. on resize calling the function that checks the innerWidth.
 // and ligics of what will happen. 
 window.onresize = updateWindowSize;
-
-
-
 //calling the function that displays the calander
 displayMonths();
-
-
-//work here. month should by the i in month for each loop. 
-//creat a toggle and add an onclick event on button. 
-
-//async to wait for dom to reload don't know if needed
-/*async function waitForDOM() {
-    return new Promise((resolve) => {
-      document.addEventListener('DOMContentLoaded', () => {
-        resolve();
-      });
-    });
-  }*/
-  /*async function caro(){
-    //await waitForDOM();
-    //let element = document.getElementById(month);
-    //element.classList.toggle("show");
-   
-    //console.log(month)
-}*/
-buttonRight.addEventListener("click", () => {
-    console.log("clicked");
-    months.forEach((month, i) => {
-        let monthDivId = document.getElementById(month);
-        if(widthViewPort >= 566 && widthViewPort <= 850) {
-            console.log("in tablet")
-            if (i >= 0  && i <=5) {
-                monthDivId.classList.toggle("do-not-show");
-            }
-            
-            else if (i >= 6  && i <=11)
-            monthDivId.className = "do-not-show"
-            monthDivId.classList.toggle("show");
-          
-        }
-        else if( widthViewPort <= 565) {
-            console.log(widthViewPort)
-            console.log("IN MOBLIE")
-        }
-        else{
-            console.log("in desk");
-        }
-    });
-    
-}) ;
-
-     
