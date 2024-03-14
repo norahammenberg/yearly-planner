@@ -8,35 +8,54 @@ font-family: 'Work Sans', sans-serif;*/
 
 body {
     margin: 0;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     font-family: 'EB Garamond', serif;
     font-weight: 200;
     background-color: #F4F4F2;
-    background-image: url(bubbles-svg.svg);
+    /*background-image: url(bubbles-svg.svg);
     background-repeat: no-repeat;
-    background-position: 90% 11vh; /*Needs sorting to right possition.*/
+    background-size: 96%;
+    background-position: 90% 11.5vh; /*Needs sorting to right possition.
+    background-attachment: local;*/
+
     
+   
 }
 
 .heading {
     font-family: 'EB Garamond', serif;
     font-size: 68px;
     color: #361E21;
-    margin: 60px 0 0 100px;
-    z-index: 10;
+    margin: 60px 0 0 80px;
+    /*z-index: 10;*/
     
 }
-
+.main-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /*background: linear-gradient(transparent 40%, #CF848E 40%) no-repeat;
+    z-index: -1;*/
+}
 .calander-container{
     font-family: 'Lato', sans-serif;
     color: #34474F;
     font-size: 16px;
     font-weight: 300;
-
+    padding: 40px 20px 350px 20px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);  
     justify-content: space-evenly;
-    padding: 40px 80px 100px 80px;
+    width: 91%;
+    
+    /*background-image: url(bubbles-svg.svg);*/
+
+
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-size: 101%;
+    background-position: 100% 150svh; /*Needs sorting to right possition.*/
+    z-index: -1;
 }
 .odd .day {
     background-color:#E8E8E6;
@@ -50,19 +69,21 @@ body {
     padding-top: 10px;
     text-align: start;
     justify-content: center;   
+    
 }
 
 h2 {    
     padding-left: 8px;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
     font-family: 'EB Garamond', serif;
     font-size: 19px;
     font-weight: 100;
 }
 
 .current-month {
-    border-radius: 10px;
-    background-color: rgb(232, 232, 230, 0.8);
+   font-weight: 700;
+   
+    
 }
 .day {
     grid-column: span 1;
@@ -73,12 +94,20 @@ h2 {
     border: solid 1px #CF848E ;
     text-align: end;
     justify-content: center;
-}
-.day:nth-child(7n +7) {
-    background-color: #D1D1CF;
+    display: flex;
+    justify-content: space-between;
 }
 .day:nth-child(7n +8) {
     background-color: #D1D1CF;
+}
+.day:nth-child(7n +9) {
+    background-color: #D1D1CF;
+}
+.current-day {
+    outline: solid 3px #361E21;
+    outline-offset: -3px;
+    border-radius: 5px;
+    font-weight: 700;
 }
 
 .empty-day {
@@ -91,5 +120,109 @@ h2 {
     background-color: rgba(255, 255, 255, 0);
 }
 
+button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    display: none;
+    margin: 0;
+    position: relative;
+}
+i {
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.footer {
+    margin-top: -330px;
+    text-align: center;
+    color: #34474F;
+    background-color: rgba(232, 232, 230, 0.5);
+    padding: 100px;
+    
+    
+}
+
+.footer-heading {
+    font-size: 36px;
+    padding:4px;
+}
+.footer-para {
+    padding-top: 40px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+.do-not-show {
+    display: none;
+    background-color: #34474F;
+}
+.show {
+    display: contents;
+}
 
 /*set the width to the exact of 7 squears*/
+
+/*Media queary*/
+@media only screen and (max-width: 1204px) {
+    h2 {
+        font-size: 16px;
+    }
+    
+    
+}
+@media only screen and (max-width: 1063px) {
+   
+    
+    .day {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+     h2 {
+        font-size: 14px;
+        
+    }
+}
+@media only screen and (max-width: 850px) {
+   
+    .calander-container {
+        grid-template-columns: repeat(6, 1fr); 
+        grid-area: overlap;
+    }
+    .day {
+        grid-area: overlap;
+    }
+    .heading {
+       
+        font-size: 60px;
+    }
+    button {
+        display: contents;
+    }
+   
+  
+}
+@media only screen and (max-width: 565px) {
+   
+    .calander-container {
+        grid-template-columns: repeat(4, 1fr); 
+        padding: 40px;
+        
+    }
+    .heading {
+        margin-left: 40px;
+        font-size: 60px;
+    }
+    .footer {
+        margin-top: 0;
+    }
+    .footer-heading {
+        font-size: 24px;
+    }
+    .footer-para{
+        font-size: 14px;
+       
+    }
+   
+}
